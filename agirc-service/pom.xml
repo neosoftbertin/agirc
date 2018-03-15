@@ -12,6 +12,11 @@
 		<!-- Internal dependencies -->
 		<dependency>
 			<groupId>fr.neosoft</groupId>
+			<artifactId>agirc-model</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>fr.neosoft</groupId>
 			<artifactId>agirc-consumer</artifactId>
 			<version>${project.version}</version>
 		</dependency>
