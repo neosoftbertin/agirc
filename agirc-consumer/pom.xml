@@ -14,5 +14,11 @@
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 		</dependency>
+		<!-- Internal dependencies -->
+		<dependency>
+			<groupId>fr.neosoft</groupId>
+			<artifactId>agirc-model</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 	</dependencies>
 </project>
