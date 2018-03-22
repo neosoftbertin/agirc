@@ -6,23 +6,30 @@
 		<artifactId>agirc-parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>agirc-service</artifactId>
+	<artifactId>agirc-batch</artifactId>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter</artifactId>
+			<artifactId>spring-boot-starter-batch</artifactId>
 		</dependency>
+	
 		<!-- Internal dependencies -->
 		<dependency>
 			<groupId>fr.neosoft</groupId>
-			<artifactId>agirc-model</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>fr.neosoft</groupId>
-			<artifactId>agirc-consumer</artifactId>
+<!-- 			TODO : Normalement ici on devra appeler le process et pas le service directement -->
+<!-- 			<artifactId>agirc-process</artifactId> -->
+			<artifactId>agirc-service</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
 </project>

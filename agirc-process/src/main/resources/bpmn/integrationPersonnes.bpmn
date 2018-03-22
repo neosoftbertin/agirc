@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="1.11.3">
+  <bpmn:process id="integrationPersonnes" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="Arrivée d&#39;une nouvelle personne" camunda:formKey="embedded:app:forms/nouvellePersonne.html">
+      <bpmn:outgoing>SequenceFlow_0hfb8dy</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_0hfb8dy" sourceRef="StartEvent_1" targetRef="Task_0ruovlo" />
+    <bpmn:serviceTask id="Task_0ruovlo" name="Enregistrer la personne" camunda:delegateExpression="#{savePersonAdapter}">
+      <bpmn:incoming>SequenceFlow_0hfb8dy</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0r7t9k8</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Task_095e423" name="Lister les personnes de la base" camunda:delegateExpression="#{listPersonAdapter}">
+      <bpmn:incoming>SequenceFlow_0r7t9k8</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0e43p4a</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="SequenceFlow_0r7t9k8" sourceRef="Task_0ruovlo" targetRef="Task_095e423" />
+    <bpmn:endEvent id="EndEvent_1p1qvwc">
+      <bpmn:incoming>SequenceFlow_0e43p4a</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_0e43p4a" sourceRef="Task_095e423" targetRef="EndEvent_1p1qvwc" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="integrationPersonnes">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="173" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="157" y="138" width="68" height="36" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0hfb8dy_di" bpmnElement="SequenceFlow_0hfb8dy">
+        <di:waypoint xsi:type="dc:Point" x="209" y="120" />
+        <di:waypoint xsi:type="dc:Point" x="305" y="120" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="257" y="99" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ServiceTask_02v0pfa_di" bpmnElement="Task_0ruovlo">
+        <dc:Bounds x="305" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_1w2odlp_di" bpmnElement="Task_095e423">
+        <dc:Bounds x="524" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0r7t9k8_di" bpmnElement="SequenceFlow_0r7t9k8">
+        <di:waypoint xsi:type="dc:Point" x="405" y="120" />
+        <di:waypoint xsi:type="dc:Point" x="524" y="120" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="464.5" y="99" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="EndEvent_1p1qvwc_di" bpmnElement="EndEvent_1p1qvwc">
+        <dc:Bounds x="753" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="771" y="142" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0e43p4a_di" bpmnElement="SequenceFlow_0e43p4a">
+        <di:waypoint xsi:type="dc:Point" x="624" y="120" />
+        <di:waypoint xsi:type="dc:Point" x="753" y="120" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="688.5" y="99" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
